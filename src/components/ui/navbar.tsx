@@ -7,10 +7,13 @@ function Navbar(){
                 NextActionsCRUD
             </h1>
 
-            <ModeToggle/>
+
+            <ModeToggle />
         </div>
     )
 }
+
+
 
 
 export default Navbar
