@@ -7,5 +7,15 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = env ("DATABASE_URL")
+}
+
+model Task {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String?
+  priority     String   @default("low")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
 }
