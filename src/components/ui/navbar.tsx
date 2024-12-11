@@ -8,9 +8,8 @@ function Navbar(){
             <h1>NextActionsCRUD</h1>
 
 <div className="flex gap-x-2 items-">
-    <Link href="/new"
-    className={buttonVariants({variant: "outline"})}>
-        Create Task
+    <Link href="/new"className={buttonVariants({variant: "secondary"})}>
+        Crear Tareas
     </Link>
         <ModeToggle />
 

@@ -18,42 +18,59 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
 
-export function CardWithForm() {
+export function TaskForm() {
+    async function createTask(formData: FormData){
+      "use server"
+      const name = formData.get("name")
+      const description = formData.get("description")
+      const priority = formData.get("priority")
+
+      console.log({name, description, priority})
+    }
+
   return (
+  <form action={createTask}> 
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle>Crear Tareas</CardTitle>
+        <CardDescription>
+          Complete el siguiente formulario para crear una nueva tarea.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form>
+      <CardContent> 
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Name of your project" />
+              <Input name="name" id="name" placeholder="Nombre de tu tarea" />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
+              <Label htmlFor="description">Description</Label>
+              <Textarea name="description" id="description" placeholder="Description of your task"/>
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="priority">Priority</Label>
+              <Select name="priority">
+                <SelectTrigger id="priority">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                  <SelectItem value="low">Low</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="urgent">Urgent</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
-        </form>
+      
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+        <Button type="submit">Crear Tarea</Button>
       </CardFooter>
     </Card>
+  </form>
   )
 }
