@@ -1,25 +1,9 @@
 import prisma from "@/lib/prisma";
 import { Button } from "./button";
 import { revalidatePath } from "next/cache";
+import { removeTask } from "@/actions/tasks.actions";
 
 export function TaskButtonDelete({ taskId }: { taskId: number }) {
-    async function removeTask(formData: FormData){
-         "use server"
-         const taskId = formData.get("taskId")?. toString();
-
-        if (!taskId){
-            return;
-        }
-
-        await prisma.task.delete({
-            where:{
-                id: parseInt(taskId)
-            }
-        })
-
-        revalidatePath('/');
-
-    }
 
     return (
        <form action={removeTask}>

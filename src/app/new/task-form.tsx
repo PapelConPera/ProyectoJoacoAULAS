@@ -13,9 +13,10 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { createTask } from "@/actions/tasks.actions"
+import { Task } from "@prisma/client"
 
-export function TaskForm() {
-  return (
+export function TaskForm({ task }: {task: Task}) {
+return (
   <form action={createTask}> 
     <Card className="w-[350px]">
       <CardHeader>
@@ -28,11 +29,11 @@ export function TaskForm() {
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Name</Label>
-              <Input name="name" id="name" placeholder="Nombre de tu tarea" />
+              <Input name="name" id="name" placeholder="Nombre de tu tarea" defaultValue={task?.name}/>
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="description">Description</Label>
-              <Textarea name="description" id="description" placeholder="Description of your task"/>
+              <Textarea name="description" id="description" placeholder="Description of your task" defaultValue={task?.priority}/>
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="priority">Priority</Label>
