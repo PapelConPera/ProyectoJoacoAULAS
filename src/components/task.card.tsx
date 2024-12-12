@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button"
 import {Card,CardContent,CardFooter,CardHeader,CardTitle,} from "@/components/ui/card"
 import { Task } from "@prisma/client"
 import clsx from "clsx"
+import { TaskButtonDelete } from "./ui/task-button-delete"
 
 export function TaskCard({task}: {task: Task}){
     return (
@@ -21,7 +22,7 @@ export function TaskCard({task}: {task: Task}){
           <span className="text-slate-600 ">{new Date(task.createdAt).toLocaleDateString()}</span>
         </CardContent>
         <CardFooter className="flex gap-x-2 justify-end">
-          <Button variant="destructive" className="bg-red-500">Delete</Button>
+          <TaskButtonDelete taskId={task.id} />
           <Button className="">Edit</Button>
         </CardFooter>
       </Card>
