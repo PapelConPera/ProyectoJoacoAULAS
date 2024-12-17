@@ -14,8 +14,8 @@ export default async function TaskPageEdit({params}: {
         }
     })
 
-    if (!task){
-        redirect("/")
+        if (!task){
+            redirect("/")
     }
 
     console.log(task)

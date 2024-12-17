@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { createTask } from "@/actions/tasks.actions"
-import { Task } from "@prisma/client"
+import { Task } from "@prisma/client/edge"
 
 export function TaskForm({ task }: {task: Task}) {
 return (

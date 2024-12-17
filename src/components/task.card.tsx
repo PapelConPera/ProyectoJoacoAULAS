@@ -1,7 +1,7 @@
 import {Badge} from "@/components/ui/badge"
 import {Button, buttonVariants} from "@/components/ui/button"
 import {Card,CardContent,CardFooter,CardHeader,CardTitle,} from "@/components/ui/card"
-import { Task } from "@prisma/client"
+import { Task } from "@prisma/client/edge"
 import clsx from "clsx"
 import { TaskButtonDelete } from "./ui/task-button-delete"
 import Link from "next/link"
@@ -24,7 +24,8 @@ export function TaskCard({task}: {task: Task}){
         </CardContent>
         <CardFooter className="flex gap-x-2 justify-end">
           <TaskButtonDelete taskId={task.id} />
-          <Link href={`/tasks/${task.id}/edit`}
+          <Link 
+          href={`/tasks/${task.id}/edit`}
           className={buttonVariants({variant: "secondary"})}
           >Edit</Link>
         </CardFooter>
